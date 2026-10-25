@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Logs generados al ejecutar
+logs/
+
+# Material del curso y entregables (no van al repositorio)
+*.pdf
+*.docx
+para_integrantes/
+
+# Sistema operativo / editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
