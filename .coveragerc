@@ -1,0 +1,10 @@
+# Configuración de coverage.py (herramienta opcional, solo para medir pruebas)
+[run]
+branch = True
+source =
+    software_fj
+    main
+
+[report]
+show_missing = True
+fail_under = 100
