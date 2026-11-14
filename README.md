@@ -1,18 +1,10 @@
 # Software FJ — Sistema Integral de Gestión de Clientes, Servicios y Reservas
 
-Proyecto colaborativo de la **Fase 4 — Componente práctico** del curso **Programación (213023)**, UNAD.
+Proyecto de la **Fase 4 — Componente práctico** del curso **Programación (213023)**, UNAD.
 
 Sistema orientado a objetos en Python, **sin bases de datos**, que gestiona clientes, servicios (reserva de salas, alquiler de equipos y asesorías especializadas) y reservas. Aplica abstracción, herencia, polimorfismo y encapsulación, y un manejo avanzado de excepciones. Toda la información vive en objetos y listas en memoria; el único archivo que se escribe es el **log de eventos y errores**.
 
-## Integrantes
-
-| # | Integrante | Usuario GitHub | Módulo | Estado |
-|---|---|---|---|---|
-| 1 | Juan Herrera | [@juanherrera1807](https://github.com/juanherrera1807) | Estructura base, excepciones personalizadas y archivo de logs | ✅ |
-| 2 | _completar_ | _completar_ | Clase abstracta `Entidad` y clase `Cliente` | _completar_ |
-| 3 | _completar_ | _completar_ | `Servicio` abstracto y servicios especializados | _completar_ |
-| 4 | _completar_ | _completar_ | Clase `Reserva` y su ciclo de vida | _completar_ |
-| 5 | _completar_ | _completar_ | `SistemaGestion` y simulación (`main.py`) | _completar_ |
+**Autor:** Juan Herrera ([@juanherrera1807](https://github.com/juanherrera1807))
 
 ## Requisitos
 
@@ -166,6 +158,6 @@ Ejecuta **35 operaciones** agrupadas en cinco bloques. 17 terminan con éxito y 
 ## Flujo de trabajo en GitHub
 
 1. Cada módulo se desarrolla en su propia rama (`feature/...`, `test/...`, `docs/...`).
-2. Cada tarea tiene un issue asignado.
+2. Cada tarea tiene un issue asociado.
 3. Commits pequeños y descriptivos con prefijos convencionales (`feat:`, `fix:`, `test:`, `docs:`, `chore:`).
-4. Los cambios se integran a `main` mediante pull requests revisados por otro integrante.
+4. Los cambios se integran a `main` mediante pull requests.
