@@ -13,6 +13,7 @@ import unittest
 from datetime import datetime
 from unittest import mock
 
+from apoyo_logs import setUpModule, tearDownModule  # noqa: F401 - aísla el archivo de logs
 from software_fj.cliente import Cliente
 from software_fj.excepciones import (
     CalculoInconsistenteError,

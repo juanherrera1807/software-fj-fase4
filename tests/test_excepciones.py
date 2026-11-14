@@ -10,6 +10,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from apoyo_logs import setUpModule, tearDownModule  # noqa: F401 - aísla el archivo de logs
 from software_fj.excepciones import (
     CalculoInconsistenteError,
     ClienteInvalidoError,
@@ -22,7 +23,7 @@ from software_fj.excepciones import (
     SoftwareFJError,
     ValidacionError,
 )
-from software_fj.registro import ARCHIVO_LOGS, NOMBRE_LOGGER, configurar_logger, obtener_logger
+from software_fj.registro import ARCHIVO_LOGS, NOMBRE_LOGGER, configurar_logger, obtener_logger, redirigir_logs
 
 
 class TestExcepciones(unittest.TestCase):
@@ -68,6 +69,20 @@ class TestRegistro(unittest.TestCase):
 
     def test_archivo_de_logs_por_defecto(self):
         self.assertEqual(ARCHIVO_LOGS.name, "software_fj.log")
+
+    def test_redirigir_logs_cambia_el_archivo_destino(self):
+        logger_principal = logging.getLogger(NOMBRE_LOGGER)
+        archivo_original = Path(logger_principal.handlers[0].baseFilename)
+        with tempfile.TemporaryDirectory() as carpeta:
+            destino = Path(carpeta) / "redirigido.log"
+            try:
+                redirigir_logs(destino).info("mensaje redirigido")
+                self.assertEqual(len(logger_principal.handlers), 1)
+                logger_principal.handlers[0].flush()
+                self.assertIn("mensaje redirigido", destino.read_text(encoding="utf-8"))
+            finally:
+                # Se cierra el archivo temporal antes de borrar la carpeta
+                redirigir_logs(archivo_original)
 
     def test_escribe_en_archivo(self):
         logger_principal = logging.getLogger(NOMBRE_LOGGER)
