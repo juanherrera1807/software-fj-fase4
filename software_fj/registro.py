@@ -48,6 +48,18 @@ def configurar_logger(archivo: Path = ARCHIVO_LOGS, nivel: int = logging.INFO) -
     return logger
 
 
+def redirigir_logs(archivo: Path) -> logging.Logger:
+    """Hace que el logger principal escriba en otro archivo (ej. uno temporal en las pruebas)."""
+    # Se obtiene el logger principal, del que heredan todos los loggers hijos
+    logger = logging.getLogger(NOMBRE_LOGGER)
+    # Se cierran y quitan los manejadores actuales para liberar el archivo anterior
+    for manejador in list(logger.handlers):
+        logger.removeHandler(manejador)
+        manejador.close()
+    # Se vuelve a configurar el logger apuntando al nuevo archivo
+    return configurar_logger(archivo)
+
+
 def obtener_logger(modulo: str) -> logging.Logger:
     """Devuelve un logger hijo para un módulo concreto (ej. 'software_fj.cliente')."""
     # Se garantiza que el logger principal esté configurado

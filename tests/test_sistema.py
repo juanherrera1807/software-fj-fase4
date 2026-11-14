@@ -4,6 +4,7 @@ import contextlib
 import io
 import unittest
 
+from apoyo_logs import setUpModule, tearDownModule  # noqa: F401 - aísla el archivo de logs
 from software_fj.excepciones import ClienteInvalidoError, EntidadNoEncontradaError, ServicioInvalidoError
 from software_fj.sistema import SistemaGestion
 

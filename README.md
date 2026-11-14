@@ -42,7 +42,7 @@ Al terminar, el registro de la ejecución queda en `logs/software_fj.log`.
 │   ├── servicios.py           # Servicio abstracto + ReservaSala, AlquilerEquipo, Asesoria
 │   ├── reserva.py             # Reserva: confirmar, cancelar y procesar
 │   └── sistema.py             # SistemaGestion: listas internas y ejecución segura
-├── tests/                     # 77 pruebas unitarias (cobertura del 100 %)
+├── tests/                     # 78 pruebas unitarias (cobertura del 100 %)
 ├── .coveragerc                # Configuración de la medición de cobertura
 └── logs/                      # Se crea al ejecutar (ignorado por git)
 ```
@@ -143,7 +143,7 @@ Ejecuta **35 operaciones** agrupadas en cinco bloques. 17 terminan con éxito y 
 
 ## Pruebas
 
-77 pruebas con `unittest` cubren el **100 % de las líneas y ramas** del código, incluidos los casos límite y las rutas defensivas (por ejemplo, el respaldo a consola cuando el archivo de logs no se puede abrir).
+78 pruebas con `unittest` cubren el **100 % de las líneas y ramas** del código, incluidos los casos límite y las rutas defensivas (por ejemplo, el respaldo a consola cuando el archivo de logs no se puede abrir).
 
 | Archivo | Qué prueba |
 |---|---|
@@ -154,6 +154,8 @@ Ejecuta **35 operaciones** agrupadas en cinco bloques. 17 terminan con éxito y 
 | `test_sistema.py` | Listas internas, búsquedas y ejecución segura |
 | `test_casos_limite.py` | Propiedades, validaciones poco frecuentes y código defensivo |
 | `test_main.py` | Resumen final y ejecución de `main.py` como programa |
+
+Las pruebas no modifican el log real: `tests/apoyo_logs.py` desvía el logger a un archivo temporal mientras se ejecuta cada módulo de pruebas (mediante `registro.redirigir_logs`) y lo restaura al terminar. Así, `logs/software_fj.log` solo contiene los eventos de la aplicación.
 
 ## Flujo de trabajo en GitHub
 

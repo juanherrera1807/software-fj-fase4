@@ -6,6 +6,7 @@ import runpy
 import unittest
 from pathlib import Path
 
+from apoyo_logs import setUpModule, tearDownModule  # noqa: F401 - aísla el archivo de logs
 import main
 
 # Ruta de main.py, usada para ejecutarlo como lo haría el usuario
